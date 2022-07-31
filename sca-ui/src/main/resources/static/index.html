@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <div>
+      <h2>The Index Page</h2>
+      <button onclick="doBuy()">buy</button>
+      <span id="result"></span>
+  </div>
+  <script src="http://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+     function doBuy() {
+        let url = "http://localhost:9000/nacos/provider/echo/9000"
+        //基于axios框架发送异步ajax请求
+         axios.get(url)
+             .then(function (promise) {
+               console.log(promise.data)
+              let span = document.getElementById("result")
+                 span.innerHTML=promise.data
+             })
+         .catch(function (error){
+             let span = document.getElementById("result")
+           console.log(error)
+             if(error.response.status==429){
+               span.innerHTML   =error.response.statusText
+             }
+         })
+
+    }
+
+</script>
+</body>
+</html>

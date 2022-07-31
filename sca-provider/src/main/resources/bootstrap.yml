@@ -1,0 +1,21 @@
+server:
+  port: 8082
+spring:
+  application:
+    name: sca-provider #服务名，单词间不能用下划线
+  cloud:
+    nacos:
+      discovery: #配置服务注册，发现地址
+        server-addr: localhost:8848
+      config: #配置服务配置中心地址
+        server-addr: localhost:8848
+        file-extension: yml
+        #默认命名空间是public
+        #默认组是默认defalut分组
+        shared-configs[0]:
+          data-id: app-public.yml
+          refresh: true
+    sentinel:
+      transport:
+        dashboard: localhost:8180
+      web-context-unify: false
