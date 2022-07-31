@@ -46,10 +46,17 @@ public class testCache {
                 System.out.println(selectAll());
             }
         };
+        Thread t6= new Thread(){
+            @Override
+            public void run() {
+                System.out.println(selectAll());
+            }
+        };
         t1.start();
         t2.start();
         t3.start();
         t4.start();
+        t6.start();
 
 
     }
